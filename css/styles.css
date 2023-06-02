@@ -9,12 +9,14 @@ body {
   overflow: hidden;
 }
 
-.contenedor {
+.contenedor-header {
+  background: #fff;
+  position: fixed;
   width: 100%;
-  min-height: 100vh;
-  background-color: #f3f5f8;
+  top: 0;
+  left: 0;
 }
-.contenedor nav {
+.contenedor-header header {
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -22,7 +24,7 @@ body {
   line-height: 80px;
   z-index: 111;
 }
-.contenedor nav .logo {
+.contenedor-header header .logo {
   display: flex;
   font-size: 40px;
   font-weight: 800;
@@ -30,36 +32,57 @@ body {
   letter-spacing: 3px;
   cursor: pointer;
 }
-.contenedor nav .logo b {
+.contenedor-header header .logo b {
   font-size: 70px;
   color: #7f00ff;
 }
-.contenedor nav .navItems {
+.contenedor-header header .navItems {
   display: flex;
 }
-.contenedor nav .navItems li {
+.contenedor-header header .navItems li {
   list-style: none;
   margin: 0 15px;
 }
-.contenedor nav .navItems li a {
-  font-size: 25px;
+.contenedor-header header .navItems li a {
+  font-size: 20px;
+  font-weight: 800;
   color: #3d535f;
   letter-spacing: 3px;
   text-decoration: none;
   text-transform: capitalize;
 }
-.contenedor nav .navItems li a:hover {
+.contenedor-header header .navItems li a:hover {
   color: #7f00ff;
 }
-.contenedor nav .redes a {
+.contenedor-header header .redes a {
   font-size: 30px;
   color: #3d535f;
   margin: 25px 10px;
 }
-.contenedor nav .redes a:hover {
+.contenedor-header header .redes a:hover {
   color: #7f00ff;
 }
-.contenedor .wrapper {
+
+.navItemsResponsive {
+  background-color: #7f00ff;
+  color: #f3f5f8;
+  padding: 5px 15px;
+  margin: 20px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+.navItemsResponsive i {
+  display: flex;
+  margin: 7px 0;
+}
+
+.inicio {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f3f5f8;
+}
+.inicio .wrapper {
   display: flex;
   width: 90%;
   height: calc(100vh - 80px);
@@ -68,7 +91,7 @@ body {
   padding: 0 10%;
   overflow: hidden;
 }
-.contenedor .wrapper::before {
+.inicio .wrapper::before {
   position: absolute;
   content: "";
   height: 400px;
@@ -79,7 +102,7 @@ body {
   background: linear-gradient(45deg, #7f00ff, pink);
   animation: object1 3s linear infinite;
 }
-.contenedor .wrapper::after {
+.inicio .wrapper::after {
   position: absolute;
   content: "";
   height: 100px;
@@ -90,21 +113,22 @@ body {
   background: linear-gradient(45deg, #7f00ff, pink);
   animation: object2 6s linear infinite;
 }
-.contenedor .wrapper .cols0 {
-  width: 60%;
+.inicio .wrapper .cols0 {
+  width: 70%;
   z-index: 5;
 }
-.contenedor .wrapper .cols {
+.inicio .wrapper .cols {
   width: 50%;
+  padding-top: 20%;
 }
-.contenedor .wrapper .cols .topline {
+.inicio .wrapper .cols .topline {
   display: block;
   position: relative;
   font-size: 35px;
   letter-spacing: 5px;
   color: #3d535f;
 }
-.contenedor .wrapper .cols .topline::after {
+.inicio .wrapper .cols .topline::after {
   position: absolute;
   content: "";
   height: 4px;
@@ -112,30 +136,30 @@ body {
   bottom: 10px;
   background-color: #7f00ff;
 }
-.contenedor .wrapper .cols h1 {
+.inicio .wrapper .cols h1 {
   display: block;
-  font-size: 4em;
+  font-size: 40px;
   font-weight: 900;
   color: #3d535f;
 }
-.contenedor .wrapper .cols h1 .multiText {
+.inicio .wrapper .cols h1 .multiText {
   color: #7f00ff;
 }
-.contenedor .wrapper .cols p {
+.inicio .wrapper .cols p {
   display: block;
   width: 100%;
   font-size: 1.2em;
   color: #3d535f;
 }
-.contenedor .wrapper .cols p .cambiarColor {
+.inicio .wrapper .cols p .cambiarColor {
   color: #7f00ff;
 }
-.contenedor .wrapper .btns {
+.inicio .wrapper .btns {
   width: 100%;
   position: relative;
   left: 150px;
 }
-.contenedor .wrapper .btns button {
+.inicio .wrapper .btns button {
   outline: none;
   border: none;
   cursor: pointer;
@@ -149,17 +173,17 @@ body {
   text-transform: capitalize;
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
 }
-.contenedor .wrapper .btns button:hover {
+.inicio .wrapper .btns button:hover {
   background-color: #7f00ff;
 }
-.contenedor .wrapper .imgbox {
+.inicio .wrapper .imgbox {
   position: relative;
   width: 100%;
   height: 100%;
   right: -150px;
   top: 70px;
 }
-.contenedor .wrapper .imgbox img {
+.inicio .wrapper .imgbox img {
   position: relative;
   height: 100%;
   width: 400px;
@@ -167,21 +191,13 @@ body {
   right: 50px;
   animation: animateUser 4s linear infinite;
 }
-.contenedor .wrapper .imgbox #splash {
+.inicio .wrapper .imgbox #splash {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-35deg);
   width: 110%;
   animation: animate 4s linear infinite;
-}
-.contenedor .nav-responsible {
-  background-color: #9fc131;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: none;
 }
 
 @keyframes animateUser {
@@ -207,5 +223,79 @@ body {
   50% {
     left: 35%;
     top: 10%;
+  }
+}
+@media screen and (max-width: 980px) {
+  nav {
+    display: none;
+  }
+  .navItemsResponsive {
+    display: block;
+  }
+  nav.responsive {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 75px;
+    background-color: #f3f5f8;
+    width: 220px;
+  }
+  nav.responsive ul {
+    display: block !important;
+  }
+  nav.responsive ul li {
+    border-bottom: 1px solid #7f00ff;
+    padding: 10px 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .inicio .wrapper .cols {
+    width: 50%;
+    padding-top: 20%;
+  }
+  .inicio .wrapper .cols .topline {
+    display: block;
+    position: relative;
+    font-size: 25px;
+    letter-spacing: 3px;
+    color: #3d535f;
+  }
+  .inicio .wrapper .cols .topline::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 25px;
+    bottom: 5px;
+    background-color: #7f00ff;
+  }
+  .inicio .wrapper .cols h1 {
+    display: block;
+    font-size: 20px;
+    font-weight: 900;
+    color: #3d535f;
+  }
+  .inicio .wrapper .cols h1 .multiText {
+    color: #7f00ff;
+    width: 100%;
+  }
+  .inicio .wrapper .cols p {
+    display: block;
+    width: 140%;
+    font-size: 1.2em;
+    color: #3d535f;
+  }
+  .inicio .wrapper .cols p .cambiarColor {
+    color: #7f00ff;
+  }
+  .inicio .wrapper .imgbox {
+    display: block;
+    max-width: 100%;
+  }
+  .inicio .wrapper .imgbox img {
+    width: 80%;
+    z-index: -1;
+  }
+  .inicio .wrapper .imgbox #splash {
+    display: none;
   }
 }/*# sourceMappingURL=styles.css.map */
